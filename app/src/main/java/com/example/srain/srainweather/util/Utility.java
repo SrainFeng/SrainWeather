@@ -1,10 +1,13 @@
 package com.example.srain.srainweather.util;
 
+import android.os.Environment;
 import android.text.TextUtils;
 
 import com.example.srain.srainweather.db.City;
 import com.example.srain.srainweather.db.County;
 import com.example.srain.srainweather.db.Province;
+import com.example.srain.srainweather.gson.Weather;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -92,6 +95,20 @@ public class Utility {
             }
         }
         return false;
+    }
+
+    public static Weather handleWeatherResponse(String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            Weather weather = new Gson().fromJson(weatherContent, Weather.class);
+            MyLog.d("Utility", weather.forecastList.get(0).temperature.max);
+            return weather;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

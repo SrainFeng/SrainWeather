@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="life_suggestion" translatable="false">生活建议</string>
+    <string name="forecast" translatable="false">预报</string>
+    <string name="air_quality" translatable="false">空气质量</string>
+    <string name="aqi" translatable="false">AQI指数</string>
+    <string name="pm25" translatable="false">PM2.5指数</string>
+</resources>
