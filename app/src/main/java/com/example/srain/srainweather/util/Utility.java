@@ -1,6 +1,5 @@
 package com.example.srain.srainweather.util;
 
-import android.os.Environment;
 import android.text.TextUtils;
 
 import com.example.srain.srainweather.db.City;
