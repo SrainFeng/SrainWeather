@@ -22,6 +22,7 @@ import com.example.srain.srainweather.db.County;
 import com.example.srain.srainweather.db.Province;
 import com.example.srain.srainweather.gson.Weather;
 import com.example.srain.srainweather.util.HttpUtil;
+import com.example.srain.srainweather.util.MyLog;
 import com.example.srain.srainweather.util.Utility;
 
 import org.litepal.crud.DataSupport;
@@ -65,7 +66,6 @@ public class ChooseAreaFragment extends Fragment {
 
     private Province selectedProvince;
     private City selectedCity;
-    private County selectedCounty;
 
     private int currentLevel;
 
@@ -95,11 +95,12 @@ public class ChooseAreaFragment extends Fragment {
                     queryCities();
                 } else if (currentLevel == LEVEL_CITY) {
                     selectedCity = cityList.get(position);
+                    MyLog.d("Utility", selectedCity.getCityName());
                     queryCounties();
                 } else if (currentLevel == LEVEL_COUNTY) {
                     String weatherId = countyList.get(position).getWeatherId();
-                    selectedCounty = countyList.get(position);
                     Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    MyLog.d("Utility", countyList.get(position).getCountyName());
                     intent.putExtra("weather_id", weatherId);
                     startActivity(intent);
                     getActivity().finish();
